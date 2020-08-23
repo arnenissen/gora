@@ -85,7 +85,7 @@ public class ScyllaDBStore<K, T extends Persistent> implements DataStore<K, T> {
       }
       String mappingFile = DataStoreFactory.getMappingFile(properties, this, DEFAULT_MAPPING_FILE);
       serializationType = properties.getProperty(ScyllaDBStoreParameters.SCYLLADB_SERIALIZATION_TYPE);
-      CassandraMappingBuilder mappingBuilder = new CassandraMappingBuilder(this);
+      CassandraMappingBuilder<K, T> mappingBuilder = new CassandraMappingBuilder<>(this);
       mapping = mappingBuilder.readMapping(mappingFile);
       CassandraClient cassandraClient = new CassandraClient();
       cassandraClient.initialize(properties, mapping);
@@ -284,7 +284,7 @@ public class ScyllaDBStore<K, T extends Persistent> implements DataStore<K, T> {
    */
   @Override
   public Query<K, T> newQuery() {
-    Query<K, T> query = new CassandraQuery(this);
+    Query<K, T> query = new CassandraQuery<>(this);
     return query;
   }
 

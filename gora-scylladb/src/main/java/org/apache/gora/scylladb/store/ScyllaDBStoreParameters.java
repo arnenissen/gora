@@ -25,7 +25,7 @@ public class ScyllaDBStoreParameters {
    * Property pointing to scylla db contact points.
    * string (multiple values with comma separated)
    */
-  public static final String scylladb_SERVERS = "gora.scylladbstore.servers";
+  public static final String SCYLLADB_SERVERS = "gora.scylladbstore.servers";
   /**
    * Property pointing to the scylladb keyspace.
    * string
