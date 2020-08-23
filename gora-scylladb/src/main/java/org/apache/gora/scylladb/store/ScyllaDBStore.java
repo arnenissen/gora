@@ -40,7 +40,7 @@ import java.util.List;
 import java.util.Properties;
 
 /**
- * Implementation of Cassandra Store.
+ * Implementation of ScyllaDB Store.
  *
  * @param <K> key class
  * @param <T> persistent class
@@ -66,7 +66,7 @@ public class ScyllaDBStore<K, T extends Persistent> implements DataStore<K, T> {
   }
 
   /**
-   * In initializing the cassandra datastore, read the mapping file, creates the basic connection to cassandra cluster,
+   * In initializing the ScyllaDB datastore, read the mapping file, creates the basic connection to ScyllaDB cluster,
    * according to the gora properties
    *
    * @param keyClass        key class
@@ -75,7 +75,7 @@ public class ScyllaDBStore<K, T extends Persistent> implements DataStore<K, T> {
    */
   @Override
   public void initialize(Class<K> keyClass, Class<T> persistentClass, Properties properties) throws GoraException {
-    LOG.debug("Initializing Cassandra store");
+    LOG.debug("Initializing ScyllaDB store");
     String serializationType;
     try {
       this.keyClass = keyClass;
@@ -93,7 +93,7 @@ public class ScyllaDBStore<K, T extends Persistent> implements DataStore<K, T> {
     } catch (GoraException e) {
       throw e;
     } catch (Exception e) {
-      throw new GoraException("Error while initializing Cassandra store: " + e.getMessage(), e);
+      throw new GoraException("Error while initializing ScyllaDB store: " + e.getMessage(), e);
     }
   }
 

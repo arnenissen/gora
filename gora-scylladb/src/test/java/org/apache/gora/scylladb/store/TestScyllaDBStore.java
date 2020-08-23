@@ -71,12 +71,16 @@ public class TestScyllaDBStore extends DataStoreTestBase {
     properties.setProperty(ScyllaDBStoreParameters.CLUSTER_NAME, "Test Cluster");
     properties.setProperty(ScyllaDBStoreParameters.READ_CONSISTENCY_LEVEL,"ONE");
     properties.setProperty(ScyllaDBStoreParameters.WRITE_CONSISTENCY_LEVEL,"ONE");
-    properties.setProperty("gora.cassandrastore.mapping.file", "conf/avro/gora-scylladb-mapping.xml");
+    properties.setProperty("gora.cassandrastore.mapping.file", "avro/gora-scylladb-mapping.xml");
   }
 
   @Before
   public void setUp() throws Exception {
-    super.setUp();
+    try {
+      super.setUp();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
   @Ignore()
