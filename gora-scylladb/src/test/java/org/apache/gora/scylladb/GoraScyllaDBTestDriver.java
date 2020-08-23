@@ -60,7 +60,7 @@ public class GoraScyllaDBTestDriver extends GoraTestDriver {
 
   public GoraScyllaDBTestDriver() {
     super(ScyllaDBStore.class);
-    GenericContainer container = new FixedHostPortGenericContainer(DOCKER_IMAGE);
+    GenericContainer container = new GenericContainer(DOCKER_IMAGE).withExposedPorts(9160);
     scylladbContainer = (FixedHostPortGenericContainer) container;
   }
 
